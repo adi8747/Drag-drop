@@ -1,0 +1,380 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<style>
+body {margin:0; font-size:9px; font-family:Verdana, Geneva, sans-serif;}
+.wrapper {
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	box-sizing:border-box;
+	width:1010px !important;
+	height:600px !important;
+	background:url(images/bg1.jpg) no-repeat center center;
+	background-color:#930;
+	-webkit-user-select: none;
+     -moz-user-select: -moz-none;
+      -ms-user-select: none;
+          user-select: none;
+	overflow:hidden;
+	position:relative;
+}
+.sastturn {
+    left: 410px;
+    position: absolute;
+    top: 150px;
+	width:40px;
+	height:300px;
+	z-index:100;
+	background: -webkit-linear-gradient(red, blue); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(red, blue); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(red, blue); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(red, blue); /* Standard syntax */
+	transform: rotate(0deg);
+	background:url(images/bar.png) no-repeat;
+	background-size:100% 100%;
+	/*border-top-left-radius:40%;
+	border-top-right-radius:40%;
+	box-shadow:3px 2px 3px #C60*/
+    
+}
+
+.saturn {
+    left: 315px;
+    position: absolute;
+    top: 190px;
+	width:220px;
+	height270px;
+	border-radius:50%;
+	z-index:1000;
+}
+.circle { width:100px; height:100px; border-radius:50%; background-color:#093; position:absolute; line-height:100px; font-size:56px; font-weight:bold; color:#FFF; text-align:center; z-index:10;
+font-family: Verdana, sans-serif;
+line-height: 1em;
+color: #fff;
+font-weight:bold;
+font-size: 79px;
+text-shadow:0px 0px 0 rgb(225,225,225),1px 1px 0 rgb(205,205,205),2px 2px 0 rgb(185,185,185),3px 3px 0 rgb(165,165,165),4px 4px 0 rgb(145,145,145),5px 5px 0 rgb(125,125,125),6px 6px 0 rgb(105,105,105),7px 7px 0 rgb(85,85,85), 8px 8px 0 rgb(65,65,65),9px 9px 8px rgba(0,0,0,0.25),9px 9px 1px rgba(0,0,0,0.5),0px 0px 8px rgba(0,0,0,.2);
+box-shadow:0px 0px 0 rgb(225,225,225),1px 1px 0 rgb(205,205,205),2px 2px 0 rgb(185,185,185),3px 3px 0 rgb(165,165,165),4px 4px 0 rgb(145,145,145),5px 5px 0 rgb(125,125,125),6px 6px 0 rgb(105,105,105),7px 7px 0 rgb(85,85,85), 8px 8px 0 rgb(65,65,65),9px 9px 8px rgba(0,0,0,0.25),9px 9px 1px rgba(0,0,0,0.5),0px 0px 8px rgba(0,0,0,.2);
+ }
+#cir1 { top:37px; left:376px; }
+#cir2 { top:109px; left:533px; }
+#cir3 { top:255px; left:588px; }
+#cir4 { top:401px; left:525px; }
+#cir5 { top:456px; left:382px; }
+#cir6 { top:393px; left:230px; }
+#cir7 { top:255px; left:165px; }
+#cir8 { top:105px; left:218px; }
+
+.soc_icon_tray { position:absolute; top:80px; right:30px; width:200px; height:400px; background:url(images/Bucket.png) no-repeat; padding:17px 27px; background-size:100% 100%; }
+.icon { width:70px; height:70px; float:left; margin:10px; z-index:10000; }
+.ui-draggable-draging { z-index:100050 !important; }
+.acpt_area { position:absolute; width:150px; height:150px; border-radius:50%;/* border:2px solid #90F;*/ top:225px; left:348px; z-index:9900; }
+.not_dragable { position:absolute; top:100px; right:53px; width:200px; height:400px;/* border:1px solid #F00;*/ z-index:100000; display:none; background-color:#FFF; opacity:0; filter: alpha(opacity=0); }
+.soc_name {
+	background-color: #009933;
+    border: 4px solid #FFF;
+	border-radius:6px;
+    height: 40px;
+    left: 351px;
+    position: absolute;
+    top: 274px;
+    width: 140px;
+    z-index: 10000;
+	color:#FFF;
+	font-size:20px;
+	font-weight:bold;
+	text-align:center;
+	line-height:40px;
+	text-shadow:2px 2px 3px #C60;
+	display:none;
+}
+</style>
+<script src="js/jquery.min.js" type="text/javascript"></script>
+<script src="js/transform.js" type="text/javascript"></script>
+<script src="js/jquery-ui.js" type="text/javascript"></script>
+<script src="js/jquery.ui.touch-punch.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="http://jqueryrotate.googlecode.com/svn/trunk/jQueryRotate.js"></script>
+
+<script type="text/javascript">
+var rnd_deg = 0;
+var tm = 5000;
+var rotation = 0;
+
+var fb = "Facebook";
+var tw = "Twitter";
+var lin = "LinkedIn";
+var pin = "Pinterest";
+var gp = "Google+";
+var tum = "Tumbler";
+var inst = "Instagram";
+var vk = "VK";
+
+
+$(document).ready(function() {
+	$("#fb_icon, #tw_icon, #li_icon, #pin_icon, #gpl_icon, #tum_icon, #ins_icon, #vk_icon").draggable({
+      containment: '.wrapper',
+	  cursor: 'move',
+	  start: function() { $(this).css("z-index", 10050)},
+	  stop: function() { $(this).css("z-index", 10000)},
+      revert: true
+    });
+	
+	$("#fb_icon, #tw_icon, #li_icon, #pin_icon, #gpl_icon, #tum_icon, #ins_icon, #vk_icon, .acpt_area").data('number', 1);
+	
+	$(".acpt_area").droppable({
+      accept: '#fb_icon, #tw_icon, #li_icon, #pin_icon, #gpl_icon, #tum_icon, #ins_icon, #vk_icon',
+      drop: handleCardDrop
+    });
+	
+	function handleCardDrop( event, ui ) {
+	  //$('.ui-draggable-dragging').addClass('spl');
+	  var pro_Number = $(this).data( 'number' );
+	  var disc_Number = ui.draggable.data( 'number' );
+	  var draggableId = ui.draggable.attr("id");
+	  var count = 0;
+	 
+	  $(".not_dragable").css("display", "block");
+	  
+	  
+	  if(draggableId == "fb_icon"){
+		  $(".soc_name").css("display", "block").html(fb);
+		  
+		  if(rotation == 0){
+			rnd_deg = 10 * 360 + 0;  
+		  }else if(rotation == 1){
+			rnd_deg = 2*(10 * 360) + 0;  
+		  }else if(rotation == 2){
+			rnd_deg = 3*(10 * 360) + 0;  
+		  }else if(rotation == 3){
+			rnd_deg = 4*(10 * 360) + 0;  
+		  }
+		  
+		  var angle = 0;
+		  var dint = setInterval(function(){
+			 angle+=5;
+			 $(".sastturn").rotate(angle);
+			 
+			 if(angle == rnd_deg){
+				clearInterval(dint);
+				$(".not_dragable").css("display", "none");
+			 }
+		  },1);
+		  
+	  }else if(draggableId == "tw_icon"){
+		  $(".soc_name").css("display", "block").html(tw);
+		  if(rotation == 0){
+			rnd_deg = 10 * 360 + 45;  
+		  }else if(rotation == 1){
+			rnd_deg = 2*(10 * 360) + 45;  
+		  }else if(rotation == 2){
+			rnd_deg = 3*(10 * 360) + 45;  
+		  }else if(rotation == 3){
+			rnd_deg = 4*(10 * 360) + 45;  
+		  }
+		  var angle = 0;
+		  var dint = setInterval(function(){
+			 angle+=5;
+			 $(".sastturn").rotate(angle);
+			 
+			 if(angle == rnd_deg){
+				clearInterval(dint);
+				$(".not_dragable").css("display", "none");
+			 }
+		  },1);
+		  
+	  }else if(draggableId == "li_icon"){
+		  $(".soc_name").css("display", "block").html(lin);
+		  if(rotation == 0){
+			rnd_deg = 10 * 360 + 90;  
+		  }else if(rotation == 1){
+			rnd_deg = 2*(10 * 360) + 90;  
+		  }else if(rotation == 2){
+			rnd_deg = 3*(10 * 360) + 90;  
+		  }else if(rotation == 3){
+			rnd_deg = 4*(10 * 360) + 90;  
+		  }
+		  var angle = 0;
+		  var dint = setInterval(function(){
+			 angle+=5;
+			 $(".sastturn").rotate(angle);
+			 
+			 if(angle == rnd_deg){
+				clearInterval(dint);
+				$(".not_dragable").css("display", "none");
+			 }
+		  },1);
+		  
+	  }else if(draggableId == "pin_icon"){
+		  $(".soc_name").css("display", "block").html(pin);
+		  if(rotation == 0){
+			rnd_deg = 10 * 360 + 135;  
+		  }else if(rotation == 1){
+			rnd_deg = 2*(10 * 360) + 135;  
+		  }else if(rotation == 2){
+			rnd_deg = 3*(10 * 360) + 135;  
+		  }else if(rotation == 3){
+			rnd_deg = 4*(10 * 360) + 135;  
+		  }
+		  var angle = 0;
+		  var dint = setInterval(function(){
+			 angle+=5;
+			 $(".sastturn").rotate(angle);
+			 
+			 if(angle == rnd_deg){
+				clearInterval(dint);
+				$(".not_dragable").css("display", "none");
+			 }
+		  },1);
+		  
+	  }else if(draggableId == "gpl_icon"){
+		  $(".soc_name").css("display", "block").html(gp);
+		  if(rotation == 0){
+			rnd_deg = 10 * 360 + 180;  
+		  }else if(rotation == 1){
+			rnd_deg = 2*(10 * 360) + 180;  
+		  }else if(rotation == 2){
+			rnd_deg = 3*(10 * 360) + 180;  
+		  }else if(rotation == 3){
+			rnd_deg = 4*(10 * 360) + 180;  
+		  }
+		  var angle = 0;
+		  var dint = setInterval(function(){
+			 angle+=5;
+			 $(".sastturn").rotate(angle);
+			 
+			 if(angle == rnd_deg){
+				clearInterval(dint);
+				$(".not_dragable").css("display", "none");
+			 }
+		  },1);
+		  
+	  }else if(draggableId == "tum_icon"){
+		  $(".soc_name").css("display", "block").html(tum);
+		  if(rotation == 0){
+			rnd_deg = (10 * 360) + 225;  
+		  }else if(rotation == 1){
+			rnd_deg = 2*(10 * 360) + 225;  
+		  }else if(rotation == 2){
+			rnd_deg = 3*(10 * 360) + 225;  
+		  }else if(rotation == 3){
+			rnd_deg = 4*(10 * 360) + 225;  
+		  }
+		  var angle = 0;
+		  var dint = setInterval(function(){
+			 angle+=5;
+			 $(".sastturn").rotate(angle);
+			 
+			 if(angle == rnd_deg){
+				clearInterval(dint);
+				$(".not_dragable").css("display", "none");
+			 }
+		  },1);
+		  
+		  
+	  }else if(draggableId == "ins_icon"){
+		  $(".soc_name").css("display", "block").html(inst);
+		  if(rotation == 0){
+			rnd_deg = (10 * 360) + 270;  
+		  }else if(rotation == 1){
+			rnd_deg = 2*(10 * 360) + 270;  
+		  }else if(rotation == 2){
+			rnd_deg = 3*(10 * 360) + 270;  
+		  }else if(rotation == 3){
+			rnd_deg = 4*(10 * 360) + 270;  
+		  }
+		 var angle = 0;
+		  var dint = setInterval(function(){
+			 angle+=5;
+			 $(".sastturn").rotate(angle);
+			 
+			 if(angle == rnd_deg){
+				clearInterval(dint);
+				$(".not_dragable").css("display", "none");
+			 }
+		  },1);
+	  }else if(draggableId == "vk_icon"){
+		  $(".soc_name").css("display", "block").html(vk);
+		  if(rotation == 0){
+			rnd_deg = (10 * 360) + 315;  
+		  }else if(rotation == 1){
+			rnd_deg = 2*(10 * 360) + 315;  
+		  }else if(rotation == 2){
+			rnd_deg = 3*(10 * 360) + 315;  
+		  }else if(rotation == 3){
+			rnd_deg = 4*(10 * 360) + 315;  
+		  }
+		 var angle = 0;
+		  var dint = setInterval(function(){
+			 angle+=5;
+			 $(".sastturn").rotate(angle);
+			 
+			 if(angle == rnd_deg){
+				clearInterval(dint);
+				$(".not_dragable").css("display", "none");
+			 }
+		  },1);
+	  }
+	  
+	  
+	  
+	}
+	
+});
+//$(this).css('transform','rotate(' + (r += 360) + 'deg)');
+function reset_rotation(para){
+	/*var r = 0;
+	if(para == 1){
+		$(".sastturn").css('transform','rotate(' + (r += 270) + 'deg)');
+		//$(".sastturn").css({transform: 'rotate(270deg) translateX(0px)'}, 1000);
+	}else if(para == 2){
+		$(".sastturn").css('transform','rotate(' + (r += 0) + 'deg)');
+	}else if(para == 3){
+		$(".sastturn").css('transform','rotate(' + (r += 90) + 'deg)');
+	}else if(para == 4){
+		$(".sastturn").css('transform','rotate(' + (r += 180) + 'deg)');
+	}*/
+	
+}
+
+
+$(document).ready(function(){
+	//$(".sastturn").animate({transform: 'rotate(17000deg) translateX(0px)'}, 15000);
+});
+</script>
+
+
+</head>
+<body>
+	<div class="wrapper">
+    	<div class="sastturn"></div>
+        <div style="position:absolute; width:300px; height:300px; border:2px solid #FC0; top:150px; left:250px; z-index:1001; border-radius:50%; display:none;"></div>
+        <div class="saturn"><img src="images/Circle.png" height="220"  /></div>
+        <div class="circle" id="cir1">1</div>
+        <div class="circle" id="cir2">2</div>
+        <div class="circle" id="cir3">3</div>
+        <div class="circle" id="cir4">4</div>
+        <div class="circle" id="cir5">5</div>
+        <div class="circle" id="cir6">6</div>
+        <div class="circle" id="cir7">7</div>
+        <div class="circle" id="cir8">8</div> 
+        
+        <div class="soc_icon_tray">
+        	<div style="float:left; margin:27px 0 0 11px;">
+              <div class="icon" id="gpl_icon"><img src="images/5.png" width="70" height="70" /></div>
+              <div class="icon" id="tw_icon"><img src="images/2.png" width="70" height="70" /></div>
+              <div class="icon" id="vk_icon"><img src="images/8.png" width="70" height="70" /></div>
+              <div class="icon" id="tum_icon"><img src="images/6.png" width="70" height="70" /></div>
+              <div class="icon" id="pin_icon"><img src="images/4.png" width="70" height="70" /></div>
+              <div class="icon" id="fb_icon"><img src="images/1.png" width="70" height="70" /></div>
+              <div class="icon" id="li_icon"><img src="images/3.png" width="70" height="70" /></div>
+              <div class="icon" id="ins_icon"><img src="images/7.png" width="70" height="70" /></div>
+            </div>
+        </div>
+        <div class="acpt_area"></div>
+        <div class="not_dragable"></div>
+        <div class="soc_name">Facebook</div>      
+    </div>
+</body>
+</html>
